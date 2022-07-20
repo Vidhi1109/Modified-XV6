@@ -8,9 +8,9 @@ X=FCFS , X=PBS , X=MLFQ
 ### Syscall Tracing
 Added a system call trace and a user program strace.
 <p>
-<br> strace runs the specified command until it exits.
-<br> * It intercepts and records the system calls which are called by a process during its execution.
-<br> * It should take one argument, an integer mask, whose bits specify which system calls to trace. For example, to trace the ith system call, a program calls strace 1 << i, where i is the syscall number. 
+<br> * strace runs the specified command until it exits.
+<br>  * It intercepts and records the system calls which are called by a process during its execution.
+<br>  * It should take one argument, an integer mask, whose bits specify which system calls to trace. For example, to trace the ith system call, a program calls strace 1 << i, where i is the syscall number. 
 </p>
 <br>Files modified:
 <br>1. syscall.h - Added syscall number
