@@ -250,7 +250,8 @@ A process could potentially take advantage of this scheduling policy by giving u
   - Queues are implemented just by adding a variable queue in struct proc . This variable will update the queue number of the process.
     - Added variables to struct proc in proc.h
     - Initialised them in allocproc.
-    -  ```sh
+     
+      ```
   p->cur_ticks = 0;
   p->num_runs = 0;
   p->ticks[0] = p->ticks[1] = p->ticks[2] = p->ticks[3] = p->ticks[4] = 0;
