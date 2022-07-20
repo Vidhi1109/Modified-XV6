@@ -10,15 +10,17 @@ Added a system call trace and a user program strace.
 - strace runs the specified command until it exits.
 - It intercepts and records the system calls which are called by a process during its execution.
 - It should take one argument, an integer mask, whose bits specify which system calls to trace. For example, to trace the ith system call, a program calls strace 1 << i, where i is the syscall number.
-<br>Files modified:
-<br>1. syscall.h - Added syscall number
-<br>2. syscall.c - Modified syscall() and added syscall definition
-<br>3. sysproc.c - Extracted arguments for trace
-<br>4. user.h - Included syscall trace
-<br>5. usys.pl - Made an entry for trace
-<br>6. Added a file strace.c in user folder
-<br>7. proc.h - Add variable for mask
-<br> Details of the modifications can be seen in respective files.
+
+### Files modified:
+- syscall.h - Added syscall number
+- syscall.c - Modified syscall() and added syscall definition
+- sysproc.c - Extracted arguments for trace
+- user.h - Included syscall trace
+- usys.pl - Made an entry for trace
+- Added a file strace.c in user folder
+- proc.h - Add variable for mask
+Details of the modifications can be seen in respective files.
+ 
 
 ### Scheduling Algorithms
 <br>1. FCFS
