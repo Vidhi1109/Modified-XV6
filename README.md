@@ -7,6 +7,11 @@ X=FCFS , X=PBS , X=MLFQ
 ```
 ### Syscall Tracing
 Added a system call trace and a user program strace.
+- Import a HTML file and watch it magically convert to Markdown
+- Drag and drop images (requires your Dropbox account be linked)
+- Import and save files from GitHub, Dropbox, Google Drive and One Drive
+- Drag and drop markdown and HTML files into Dillinger
+- Export documents as Markdown, HTML and PDF
 <p>
 - strace runs the specified command until it exits.
 <br>  * It intercepts and records the system calls which are called by a process during its execution.
