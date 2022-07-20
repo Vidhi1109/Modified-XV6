@@ -7,16 +7,9 @@ X=FCFS , X=PBS , X=MLFQ
 ```
 ### Syscall Tracing
 Added a system call trace and a user program strace.
-- Import a HTML file and watch it magically convert to Markdown
-- Drag and drop images (requires your Dropbox account be linked)
-- Import and save files from GitHub, Dropbox, Google Drive and One Drive
-- Drag and drop markdown and HTML files into Dillinger
-- Export documents as Markdown, HTML and PDF
-<p>
 - strace runs the specified command until it exits.
-<br>  * It intercepts and records the system calls which are called by a process during its execution.
-<br>  * It should take one argument, an integer mask, whose bits specify which system calls to trace. For example, to trace the ith system call, a program calls strace 1 << i, where i is the syscall number. 
-</p>
+- It intercepts and records the system calls which are called by a process during its execution.
+- It should take one argument, an integer mask, whose bits specify which system calls to trace. For example, to trace the ith system call, a program calls strace 1 << i, where i is the syscall number.
 <br>Files modified:
 <br>1. syscall.h - Added syscall number
 <br>2. syscall.c - Modified syscall() and added syscall definition
