@@ -260,8 +260,7 @@ A process could potentially take advantage of this scheduling policy by giving u
   p->flag = 0;
 ```  
   - Added yield() in fork to run preempt a process when a new ones comes in.
-  - 
-<br>4. Timer ticks are updated in update_timer().
+  -  Timer ticks are updated in update_timer().
 ```sh
  struct proc *p;
   struct cpu *c = mycpu();
@@ -333,12 +332,13 @@ A process could potentially take advantage of this scheduling policy by giving u
     }
   }
 ```
-<br>5. Pre-emption for different time slices has been done in trap.c kerneltrap() and usertrap() functions.
-<br>4. Procdump
-<br>Only certain values from struct proc were to be printed. 
-<br>SCHEDULER TEST RESULTS
-<br>Average rtime Average wtime
-<br>117   44   PBS
-<br>132   39   MLFQ
-<br>97    80   FCFS
-<br>116   42   Round Robin 
+ - Pre-emption for different time slices has been done in trap.c kerneltrap() and usertrap() functions.
+ - Procdump : Only certain values from struct proc were to be printed. 
+ - SCHEDULER TEST RESULTS
+| Algorithm | Average rtime | Average wtime |
+| ------ | ------ | ------ |
+| PBS | 117 | 44 |
+| MLFQ | 132 | 39 |
+| FCFS | 97 | 80 |
+| Round Robin | 116 | 42 |
+
