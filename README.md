@@ -24,12 +24,12 @@ Details of the modifications can be seen in respective files.
  
 
 ### Scheduling Algorithms
-<br>1. FCFS
-<br>The ticks when a process initiates are recorded and scheduler gives priority to the processes that arrived earlier. 
-<br>Modifications made:
-<br>1. Added variable ctime to struct proc in proc.h
-<br>2. Initialise ctime as ticks in allocproc.
-<br>3. Added the code for fcfs in void scheduler().
+- FCFS
+ - The ticks when a process initiates are recorded and scheduler gives priority to the processes that arrived earlier. 
+Modifications made:
+Added variable ctime to struct proc in proc.h
+Initialise ctime as ticks in allocproc.
+Added the code for fcfs in void scheduler().
 ```sh
   struct proc *p;
   struct cpu *c = mycpu();
