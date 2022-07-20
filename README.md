@@ -85,18 +85,29 @@ Details of the modifications can be seen in respective files.
   }
 ```
 
-<br>2. PBS
-<br> The Static Priorityof a process (SP) can be in the range [0,100],  the smaller value will represent higher priority . Set the default priority of a process as 60. The lower the value the higher the priority.
-<br>Dynamic Priority(DP) is calculated from static priority and niceness.
-<br>The nicenessis an integer in the range [0, 10] that measures what percentage of the time the process was sleeping.
-<br>DP = max(0, min(SP − niceness + 5, 100))
-<br>niceness = (ticks spent in sleeping state/(ticks spent in sleeping state + ticks spent in running state))
-<br>If two processes have equal dynamic priority , the one which has been scheduled lesser number of times is given a chance. In case even the number of times scheduled are same, the one which started earlier is given priority.
-<br> 
-<br>Modifications made:
-<br>1. Added variables to struct proc in proc.h
-<br>2. Initialised them in allocproc , modifications in sleep to record sleep time of the process(when process goes to sleep ticks are recorded similarly when it goes to wakeup ticks are recorded. The difference between these ticks gives the sleeping time).
-<br>3. Added the code for pbs in void scheduler(). Also a function calc_dp(struct proc *) was added to calculate new niceness values and dynamic priority.
+- PBS
+  - The Static Priorityof a process (SP) can be in the range [0,100],  the smaller value will represent higher priority . Set the default priority of a      process as 60. The lower the value the higher the priority.
+  - Dynamic Priority(DP) is calculated from static priority and niceness.
+  - The nicenessis an integer in the range [0, 10] that measures what percentage of the time the process was sleeping.
+  - DP = max(0, min(SP − niceness + 5, 100))
+  - niceness = (ticks spent in sleeping state/(ticks spent in sleeping state + ticks spent in running state))
+  - If two processes have equal dynamic priority , the one which has been scheduled lesser number of times is given a chance. In case even the number of times scheduled are same, the one which started earlier is given priority.
+  - Modifications made:
+    - Added variables to struct proc in proc.h 
+    - Initialised them in allocproc , modifications in sleep to record sleep time of the process(when process goes to sleep ticks are recorded similarly when it goes to wakeup ticks are recorded. The difference between these ticks gives the sleeping time).
+    - Added the code for pbs in void scheduler(). Also a function calc_dp(struct proc *) was added to calculate new niceness values and dynamic priority.
+    - Disable yield() {pre-emption on timer interrupt} in kerneltrap() and usertrap() in trap.c.
+    - To implement pbs , syscall set_priority() was also implemented.
+      - Files modified:
+      - syscall.h - Added syscall number  
+      - syscall.c - Modified syscall() and added syscall definition
+      - sysproc.c - Extracted arguments for set_priority
+      - user.h - Included syscall set_priority
+      - usys.pl - Made an entry for set_priority
+      - Added a file setpriority.c in user folder
+      - defs.h - Add function definition
+      - proc.c - Function added  
+
 ```sh
 int calc_dp(struct proc *p)
 {
@@ -199,17 +210,7 @@ int calc_dp(struct proc *p)
     }
   }
 ```
-<br>4. Disable yield() {pre-emption on timer interrupt} in kerneltrap() and usertrap() in trap.c.
-<br>5. To implement pbs , syscall set_priority() was also implemented.
-<br>Files modified:
-<br>1. syscall.h - Added syscall number
-<br>2. syscall.c - Modified syscall() and added syscall definition
-<br>3. sysproc.c - Extracted arguments for set_priority
-<br>4. user.h - Included syscall set_priority
-<br>5. usys.pl - Made an entry for set_priority
-<br>6. Added a file setpriority.c in user folder
-<br>7. defs.h - Add function definition
-<br>8. proc.c - Function added 
+
 ```sh
 int set_priority(int new_priority, int pid)
 {
