@@ -241,16 +241,16 @@ int set_priority(int new_priority, int pid)
   return -1;
 }
 ```
-<br> Details of the modifications can be seen in respective files.
 
-<br>3. MLFQ
-### Answer to the question 
-<br>A process could potentially take advantage of this scheduling policy by giving up CPU just before time slice is over, so that it is not demoted to a lower queue and gets a fresh time slice. So, if a process entered highest priority queue and it leaves cpu before time slice is over, it will return again to the highest priority queue. This way the process will be in highest priority queue for all the time of its execution.
-<br>Modifications made:
-<br>Queues are not implemented just by adding a variable queue in struct proc . This variable will update the queue number of the process.
-<br>1. Added variables to struct proc in proc.h
-<br>2. Initialised them in allocproc.
-```sh
+
+- MLFQ
+### Answer to the question (Assignment related)
+A process could potentially take advantage of this scheduling policy by giving up CPU just before time slice is over, so that it is not demoted to a lower queue and gets a fresh time slice. So, if a process entered highest priority queue and it leaves cpu before time slice is over, it will return again to the highest priority queue. This way the process will be in highest priority queue for all the time of its execution.
+  - Modifications made
+  - Queues are implemented just by adding a variable queue in struct proc . This variable will update the queue number of the process.
+    - Added variables to struct proc in proc.h
+    - Initialised them in allocproc.
+    -  ```sh
   p->cur_ticks = 0;
   p->num_runs = 0;
   p->ticks[0] = p->ticks[1] = p->ticks[2] = p->ticks[3] = p->ticks[4] = 0;
@@ -258,7 +258,8 @@ int set_priority(int new_priority, int pid)
   p->queue = 0;
   p->flag = 0;
 ```  
-<br>3. Added yield() in fork to run preempt a process when a new ones comes in.
+  - Added yield() in fork to run preempt a process when a new ones comes in.
+  - 
 <br>4. Timer ticks are updated in update_timer().
 ```sh
  struct proc *p;
