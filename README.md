@@ -26,10 +26,15 @@ Details of the modifications can be seen in respective files.
 ### Scheduling Algorithms
 - FCFS
   - The ticks when a process initiates are recorded and scheduler gives priority to the processes that arrived earlier. 
-Modifications made:
-Added variable ctime to struct proc in proc.h
-Initialise ctime as ticks in allocproc.
-Added the code for fcfs in void scheduler().
+  - Modifications made:
+    - Added variable ctime to struct proc in proc.h
+    - Initialise ctime as ticks in allocproc
+    - Added the code for fcfs in void scheduler().
+    - Disable yield() {pre-emption on timer interrupt} in kerneltrap() and usertrap() in trap.c
+
+
+
+
 ```sh
   struct proc *p;
   struct cpu *c = mycpu();
@@ -79,7 +84,6 @@ Added the code for fcfs in void scheduler().
     }
   }
 ```
-<br>4.Disable yield() {pre-emption on timer interrupt} in kerneltrap() and usertrap() in trap.c.
 
 <br>2. PBS
 <br> The Static Priorityof a process (SP) can be in the range [0,100],  the smaller value will represent higher priority . Set the default priority of a process as 60. The lower the value the higher the priority.
