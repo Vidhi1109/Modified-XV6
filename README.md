@@ -25,7 +25,7 @@ Details of the modifications can be seen in respective files.
 
 ### Scheduling Algorithms
 - FCFS
- - The ticks when a process initiates are recorded and scheduler gives priority to the processes that arrived earlier. 
+  - The ticks when a process initiates are recorded and scheduler gives priority to the processes that arrived earlier. 
 Modifications made:
 Added variable ctime to struct proc in proc.h
 Initialise ctime as ticks in allocproc.
